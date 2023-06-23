@@ -13,7 +13,7 @@ public class EnvironmentLoader {
     private static final int OBJ_PART_COUNT = 6;
 
 
-    public Environment loadFromFile(File file){
+    public static Environment loadFromFile(File file){
         Environment env = null;
 
         Scanner sc = null;
