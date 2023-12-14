@@ -10,6 +10,14 @@ public class Roboter implements IRobot {
     private int radius;
     private int velocity;
 
+    public Roboter(int posX, int posY, double orientation, int radius, int velocity) {
+        this.posX = posX;
+        this.posY = posY;
+        this.orientation = orientation;
+        this.radius = radius;
+        this.velocity = velocity;
+    }
+
     @Override
     public List<BaseSensor> getSensors() {
         return null;
