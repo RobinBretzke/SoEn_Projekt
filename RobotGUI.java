@@ -12,5 +12,6 @@ public class RobotGUI extends JFrame {
         setTitle(title);
         setContentPane(pRootPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
     }
 }
