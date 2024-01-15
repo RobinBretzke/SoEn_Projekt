@@ -7,7 +7,7 @@ public class RobotGUI extends JFrame {
     private JPanel pDrawPanel;
     private JScrollPane spInfo;
     private JScrollPane spStatus;
-    private Roboter robot;
+    private RobotFactory robot;
 
     public RobotGUI(String title) {
         setTitle(title);
@@ -16,8 +16,8 @@ public class RobotGUI extends JFrame {
         pack();
     }
 
-    public void setRobot(Roboter robot) {
-        this.robot = robot;
+    public void setRobot(RobotFactory robot) {
+        this.robot=robot;
 
     }
 }
