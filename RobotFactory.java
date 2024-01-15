@@ -4,7 +4,7 @@ public class RobotFactory extends AbstractRobotFactory{
 
     @Override
     public Roboter createRobot() {
-
-        return new Roboter(0,0,0,10,0);
+        Roboter Roboter=new Roboter(10,10,20,20,0);
+        return Roboter;
     }
 }
