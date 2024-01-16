@@ -2,6 +2,7 @@ package thu.robots.components;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class RobotGUI extends JFrame {
     private JPanel pRootPanel;
@@ -10,6 +11,9 @@ public class RobotGUI extends JFrame {
     private JScrollPane spStatus;
     private Roboter roboter;
     private Thread updateThread;
+    private final double orientationIncrement=5;
+    private final int velocityIncrement = 10;
+
 
     public RobotGUI(String title) {
         setTitle(title);
@@ -43,7 +47,7 @@ public class RobotGUI extends JFrame {
     }
     private void createUIComponents() {
         pDrawPanel = new JPanel() {
-            @Override
+
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 if (roboter == null) {
@@ -54,9 +58,9 @@ public class RobotGUI extends JFrame {
                 int posX = roboter.getPosX();
                 int posY = roboter.getPosY();
                 posY = pDrawPanel.getHeight() - posY;
-                int orientation = roboter.getOrientation();
+                double orientation = roboter.getOrientation();
                 int velocity = roboter.getVelocity();
-                int diameter = roboter.getDiameter();
+                int diameter = roboter.getRadius();
 
 
                 String statusStr = "X: " + posX + "\n";
@@ -64,13 +68,13 @@ public class RobotGUI extends JFrame {
                 statusStr += "Orientierung: " + orientation + "°\n";
                 statusStr += "Geschwindigkeit: " + velocity + " Pixel/s\n";
 
-                taRobotStatus.setText(statusStr);
+
 
 
                 g.setColor(color);
                 g.fillOval(posX - diameter / 2, posY - diameter / 2, diameter, diameter);
                 g.setColor(Color.BLACK);
-                g.fillArc(posX - diameter / 2, posY - diameter / 2, diameter, diameter, orientation - 45, 90);
+                g.fillArc(posX - diameter / 2, posY - diameter / 2, diameter, diameter, (int)orientation - 45, 90);
 
 
                 int maxX = pDrawPanel.getWidth() + diameter / 2;
@@ -84,6 +88,35 @@ public class RobotGUI extends JFrame {
                 }
             }
         };
+    }
+
+    private void formKeyPressed(KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if (roboter == null) {
+            return;
+        }
+        int key = evt.getKeyCode();
+        if (key == KeyEvent.VK_LEFT) {
+            double orientation = roboter.getOrientation() + orientationIncrement;
+            roboter.setOrientation(normalizeOrientation(orientation));
+        } else if (key == KeyEvent.VK_RIGHT) {
+            double orientation = roboter.getOrientation() - orientationIncrement;
+            roboter.setOrientation(normalizeOrientation(orientation));
+        } else if (key == KeyEvent.VK_UP) {
+            int velocity = roboter.getVelocity();
+            roboter.setVelocity(velocity + velocityIncrement);
+        } else if (key == KeyEvent.VK_DOWN) {
+            int velocity = roboter.getVelocity();
+            roboter.setVelocity(velocity - velocityIncrement);
+        }
+    }
+
+    private double normalizeOrientation(double orientation) {
+        if (orientation <= -180) {
+            orientation = 360 + orientation;
+        } else if (orientation > 180) {
+            orientation = (orientation - 360);
+        }
+        return orientation;
     }
 
 }

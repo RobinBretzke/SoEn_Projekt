@@ -11,7 +11,7 @@ public class Roboter implements IRobot{
     private int velocity;
     private java.awt.Color color;
 
-    public Roboter(int posX, int posY, double orientation, int radius, int velocity, java.awt.Color color) {
+    public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color) {
         this.posX = posX;
         this.posY = posY;
         this.orientation = orientation;
@@ -37,8 +37,15 @@ public class Roboter implements IRobot{
 
     @Override
     public void setInitialPose(int posX, int posY, double orientation) {
-
+        this.posX=posX;
+        this.posY=posY;
+        this.orientation=orientation;
     }
+    public void setOrientation(double orientation){
+        this.orientation = orientation;
+    }
+
+    public void setVelocity(int velocity){this.velocity=velocity;}
 
     @Override
     public String getName() {
@@ -57,13 +64,16 @@ public class Roboter implements IRobot{
 
     @Override
     public double getOrientation() {
-        return 0;
+        return orientation;
     }
 
     @Override
     public int getVelocity() {
         return 0;
     }
+
+
+    java.awt.Color getColor(){return color;}
 
     @Override
     public int getRadius() {
@@ -88,8 +98,6 @@ public class Roboter implements IRobot{
             this.posX = posX + deltaX;
             this.posY = posY + deltaY;
         }
-
-
 
     }
 }
