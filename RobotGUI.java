@@ -14,6 +14,7 @@ public class RobotGUI extends JFrame {
     private Thread updateThread;
     private final double orientationIncrement=5;
     private final int velocityIncrement = 10;
+    private Environment env;
 
 
     public RobotGUI(String title) {
@@ -31,9 +32,12 @@ public class RobotGUI extends JFrame {
     public void setRobot(Roboter roboter) {
         this.roboter =roboter;
         startCalculating();
-
-
     }
+
+    public void setEnvironment(Environment env){
+        this.env=env;
+    }
+
     private void startCalculating() {
         double deltaT = 0.2;
         updateThread = new Thread(new Runnable() {

@@ -9,6 +9,9 @@ public class main {
         robotGUI.setVisible(true);
         Roboter Roboter=new Roboter(10,10,0,10,0, Color.red);
         robotGUI.setRobot(Roboter);
+        java.io.File file=new java.io.File("environment.txt");
+        Environment env=EnvironmentLoader.loadFromFile(file);
+        robotGUI.setEnvironment(env);
 
     }
 }
