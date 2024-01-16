@@ -20,21 +20,7 @@ public class Roboter implements IRobot{
         this.color=color;
     }
 
-    @Override
-    public List<BaseSensor> getSensors() {
-        return null;
-    }
-
-    @Override
-    public void activateAutonomousStearing() {
-
-    }
-
-    @Override
-    public Image getImage() {
-        return null;
-    }
-
+    //Setter
     @Override
     public void setInitialPose(int posX, int posY, double orientation) {
         this.posX=posX;
@@ -44,37 +30,42 @@ public class Roboter implements IRobot{
     public void setOrientation(double orientation){
         this.orientation = orientation;
     }
-
     public void setVelocity(int velocity){this.velocity=velocity;}
 
+    @Override
+    public void activateAutonomousStearing() {}
+
+
+    //Getter
+    @Override
+    public List<BaseSensor> getSensors() {
+        return null;
+    }
+    @Override
+    public Image getImage() {
+        return null;
+    }
     @Override
     public String getName() {
         return null;
     }
-
     @Override
     public int getPosX() {
         return 0;
     }
-
     @Override
     public int getPosY() {
         return 0;
     }
-
     @Override
     public double getOrientation() {
         return orientation;
     }
-
     @Override
     public int getVelocity() {
         return 0;
     }
-
-
     java.awt.Color getColor(){return color;}
-
     @Override
     public int getRadius() {
         return 0;
@@ -98,7 +89,7 @@ public class Roboter implements IRobot{
             this.posX = posX + deltaX;
             this.posY = posY + deltaY;
         }
-
     }
+
 }
 

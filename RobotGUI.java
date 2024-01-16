@@ -26,12 +26,12 @@ public class RobotGUI extends JFrame {
             }
         });
         pack();
-        createUIComponents();
     }
 
-    public void setRobot(Roboter robot) {
-        this.roboter =robot;
+    public void setRobot(Roboter roboter) {
+        this.roboter =roboter;
         startCalculating();
+
 
     }
     private void startCalculating() {
@@ -52,9 +52,10 @@ public class RobotGUI extends JFrame {
         });
         updateThread.start();
     }
+
+    //Frage, Wann wird das ausgeführt?
     private void createUIComponents() {
         pDrawPanel = new JPanel() {
-
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 if (roboter == null) {
