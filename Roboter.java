@@ -3,19 +3,21 @@ package thu.robots.components;
 import java.awt.*;
 import java.util.List;
 
-public class Roboter implements IRobot {
+public class Roboter implements IRobot{
     private int posX;
     private int posY;
     private double orientation;
     private int radius;
     private int velocity;
+    private java.awt.Color color;
 
-    public Roboter(int posX, int posY, double orientation, int radius, int velocity) {
+    public Roboter(int posX, int posY, double orientation, int radius, int velocity, java.awt.Color color) {
         this.posX = posX;
         this.posY = posY;
         this.orientation = orientation;
         this.radius = radius;
         this.velocity = velocity;
+        this.color=color;
     }
 
     @Override
@@ -69,7 +71,25 @@ public class Roboter implements IRobot {
     }
 
     @Override
-    public void move(double deltaTimeSec) {
+    public void move(double deltaT) {
+        // Berechnen der Wegstrecke
+        int deltaX = (int)(deltaT*velocity*Math.cos(orientation/180.*Math.PI));
+        int deltaY = (int)(deltaT*velocity*Math.sin(orientation/180.*Math.PI));
+
+        // Zusatzaufgabe: Verhindern des Verschwindens
+        // Prüfen, ob neue Position außerhalb der Fläche wäre.
+        // Falls ja, Geschwindigkeit auf 0 setzen und alte Position weiter verwenden
+        // Falls nein, neue Position berechnen und setzen
+        int radius = this.radius;
+        if(posX+deltaX<=radius||posY+deltaY<=radius||posX+deltaX>=600-radius||posY+deltaY>=400-radius){
+            velocity = 0;
+        }
+        else{
+            this.posX = posX + deltaX;
+            this.posY = posY + deltaY;
+        }
+
+
 
     }
 }

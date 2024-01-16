@@ -1,2 +1,5 @@
 .iml datei nicht löschen!!!
 
+Klasse Sensor erstellen
+Roboter wird in RobotFactory instanziiert und mit Sensordaten ausgestattet
+
