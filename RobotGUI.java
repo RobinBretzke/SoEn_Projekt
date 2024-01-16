@@ -2,6 +2,7 @@ package thu.robots.components;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class RobotGUI extends JFrame {
@@ -19,7 +20,13 @@ public class RobotGUI extends JFrame {
         setTitle(title);
         setContentPane(pRootPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
         pack();
+        createUIComponents();
     }
 
     public void setRobot(Roboter robot) {
@@ -98,15 +105,19 @@ public class RobotGUI extends JFrame {
         if (key == KeyEvent.VK_LEFT) {
             double orientation = roboter.getOrientation() + orientationIncrement;
             roboter.setOrientation(normalizeOrientation(orientation));
+            System.out.println("Left");
         } else if (key == KeyEvent.VK_RIGHT) {
             double orientation = roboter.getOrientation() - orientationIncrement;
             roboter.setOrientation(normalizeOrientation(orientation));
+            System.out.println(("Right"));
         } else if (key == KeyEvent.VK_UP) {
             int velocity = roboter.getVelocity();
             roboter.setVelocity(velocity + velocityIncrement);
+            System.out.println(("Up"));
         } else if (key == KeyEvent.VK_DOWN) {
             int velocity = roboter.getVelocity();
             roboter.setVelocity(velocity - velocityIncrement);
+            System.out.println("Down");
         }
     }
 
