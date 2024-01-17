@@ -78,6 +78,7 @@ public class Roboter implements IRobot{
         int deltaY = (int)(deltaT*velocity*Math.sin(orientation/180.*Math.PI));
 
         // Zusatzaufgabe: Verhindern des Verschwindens
+
         // Prüfen, ob neue Position außerhalb der Fläche wäre.
         // Falls ja, Geschwindigkeit auf 0 setzen und alte Position weiter verwenden
         // Falls nein, neue Position berechnen und setzen
