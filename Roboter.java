@@ -51,11 +51,11 @@ public class Roboter implements IRobot{
     }
     @Override
     public int getPosX() {
-        return 0;
+        return posX;
     }
     @Override
     public int getPosY() {
-        return 0;
+        return posY;
     }
     @Override
     public double getOrientation() {
@@ -63,12 +63,12 @@ public class Roboter implements IRobot{
     }
     @Override
     public int getVelocity() {
-        return 0;
+        return velocity;
     }
     java.awt.Color getColor(){return color;}
     @Override
     public int getRadius() {
-        return 0;
+        return radius;
     }
 
     @Override
