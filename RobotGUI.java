@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class RobotGUI extends JFrame {
     private JPanel pRootPanel;
@@ -15,9 +16,13 @@ public class RobotGUI extends JFrame {
     private final double orientationIncrement=5;
     private final int velocityIncrement = 10;
     private Environment env;
+    private double deltaT = 0.1;
+    private List<EnvironmentObject> environmentObjects;
+    private EnvironmentObject environmentObject;
 
 
-    public RobotGUI(String title) {
+    public RobotGUI(String title, Environment env) {
+        this.env=env;
         setTitle(title);
         setContentPane(pRootPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,6 +32,7 @@ public class RobotGUI extends JFrame {
             }
         });
         pack();
+        //(pDrawPanel.setPreferredSize(new Dimension(env.getWidth(), env.getHeight()));
     }
 
     public void setRobot(Roboter roboter) {
@@ -39,7 +45,7 @@ public class RobotGUI extends JFrame {
     }
 
     private void startCalculating() {
-        double deltaT = 0.2;
+
         updateThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -99,6 +105,25 @@ public class RobotGUI extends JFrame {
                     return;
                 }
 
+                environmentObjects=env.getObjects();
+                for (int i=0;i<env.getObjects().size();i++){
+                    environmentObject=environmentObjects.get(i);
+                    int posX=environmentObject.getX();
+                    int posY=environmentObject.getY();
+                    int width=environmentObject.getWidth();
+                    int length=environmentObject.getLength();
+                    double rotation=environmentObject.getOrientation();
+                    Color color=environmentObject.getColor();
+                    Graphics2D g2d=(Graphics2D)g;
+                    g2d.setColor(color);
+                    Rectangle rect=new Rectangle(posX,posY,width,length);
+                    g2d.rotate(Math.toRadians(rotation));
+                    g2d.draw(rect);
+                    g2d.fill(rect);
+
+                }
+
+
                 Color color = roboter.getColor();
                 int posX = roboter.getPosX();
                 int posY = roboter.getPosY();
@@ -133,6 +158,12 @@ public class RobotGUI extends JFrame {
                 }
             }
         };
+
     }
+
+    public double getDeltaT() {
+        return deltaT;
+    }
+
 
 }

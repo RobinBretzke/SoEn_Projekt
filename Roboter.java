@@ -11,6 +11,7 @@ public class Roboter implements IRobot{
     private int velocity;
     private java.awt.Color color;
 
+
     public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color) {
         this.posX = posX;
         this.posY = posY;
