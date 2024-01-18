@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 public class RobotGUI extends JFrame {
@@ -115,11 +117,15 @@ public class RobotGUI extends JFrame {
                     double rotation=environmentObject.getOrientation();
                     Color color=environmentObject.getColor();
                     Graphics2D g2d=(Graphics2D)g;
-                    g2d.setColor(color);
-                    Rectangle rect=new Rectangle(posX,posY,width,length);
-                    g2d.rotate(Math.toRadians(rotation));
-                    g2d.draw(rect);
-                    g2d.fill(rect);
+                    Rectangle2D rect = environmentObject.getRectangle();
+
+                    AffineTransform transform=new AffineTransform();
+                    transform.rotate(rotation, posX-width/2,posY-length/2);
+                    g2d.setTransform(transform);
+                    g.setColor(color);
+                    g.fillRect(posX,posY,width,length);
+                    g2d.setTransform(new AffineTransform());
+
 
                 }
 
