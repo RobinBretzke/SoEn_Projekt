@@ -10,14 +10,16 @@ public class Roboter implements IRobot{
     private int radius;
     private int velocity;
     private java.awt.Color color;
+    private Sensor Sensor;
 
-    public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color) {
+    public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color,Sensor Sensor) {
         this.posX = posX;
         this.posY = posY;
         this.orientation = orientation;
         this.radius = radius;
         this.velocity = velocity;
         this.color=color;
+        this.Sensor=Sensor;
     }
 
     //Setter
