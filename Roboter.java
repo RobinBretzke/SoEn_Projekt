@@ -1,6 +1,7 @@
 package thu.robots.components;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Roboter implements IRobot{
@@ -10,16 +11,17 @@ public class Roboter implements IRobot{
     private int radius;
     private int velocity;
     private java.awt.Color color;
-    private Sensor Sensor;
 
-    public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color,Sensor Sensor) {
+    private LinkedList<Sensor> Sensoren;
+
+    public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color, LinkedList<Sensor> Sensoren) {
         this.posX = posX;
         this.posY = posY;
         this.orientation = orientation;
         this.radius = radius;
         this.velocity = velocity;
         this.color=color;
-        this.Sensor=Sensor;
+        this.Sensoren=Sensoren;
     }
 
     //Setter
