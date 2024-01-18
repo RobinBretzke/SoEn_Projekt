@@ -69,7 +69,7 @@ public class Roboter implements IRobot{
     public int getVelocity() {
         return velocity;
     }
-    java.awt.Color getColor(){return color;}
+    public java.awt.Color getColor(){return color;}
     @Override
     public int getRadius() {
         return radius;
