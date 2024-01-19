@@ -35,7 +35,7 @@ public class RobotGUI extends JFrame {
             }
         });
         pack();
-        //(pDrawPanel.setPreferredSize(new Dimension(env.getWidth(), env.getHeight()));
+
     }
 
 
@@ -59,14 +59,15 @@ public class RobotGUI extends JFrame {
                 while (true) {
                     roboter.move(deltaT);
                     repaint();
-                    System.out.println(roboter.getPosX());
-                    System.out.println(roboter.getPosY());
                     EnvironmentObject obj=val.checkCollosion(roboter);
                     if (obj!=null){
                         roboter.setVelocity(0);
-                        System.out.println(obj.getX());
-                        System.out.println(obj.getY());
+                        System.out.println("PosX "+obj.getX());
+                        System.out.println("PosY "+obj.getY());
+                        System.out.println("Width "+obj.getWidth());
+                        System.out.println("Lengh "+obj.getLength());
                         break;
+
                     }
                     if (val.checkTargetZone(roboter)) {
                         System.out.println("Target reached");
@@ -164,18 +165,20 @@ public class RobotGUI extends JFrame {
                 g.setColor(color);
                 g.fillOval(posX - diameter / 2, posY - diameter / 2, diameter, diameter);
                 g.setColor(Color.BLACK);
-                g.fillArc(posX - diameter / 2, posY - diameter / 2, diameter, diameter, (int)orientation - 45, 90);
+                g.fillArc(posX - diameter / 2, posY - diameter / 2, diameter, diameter, (int)orientation -45, 90);
 
 
                 int maxX = pDrawPanel.getWidth() + diameter / 2;
                 int minX = -diameter / 2;
                 int maxY = pDrawPanel.getHeight() + diameter / 2;
                 int minY = -diameter / 2;
-
+/*
                 if (posX > maxX || posX < minX || posY > maxY || posY < minY) {
                     updateThread.interrupt();
                     JOptionPane.showMessageDialog(this, "Der Roboter ist verschwunden!", "Roboter ist verschwunden", JOptionPane.ERROR_MESSAGE);
                 }
+
+ */
             }
         };
 

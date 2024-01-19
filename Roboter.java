@@ -1,6 +1,7 @@
 package thu.robots.components;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,8 +16,9 @@ public class Roboter implements IRobot{
     private LinkedList<Sensor> Sensoren;
 
     public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color, LinkedList<Sensor> Sensoren) {
+
         this.posX = posX;
-        this.posY = posY;
+        this.posY = 400-posY;
         this.orientation = orientation;
         this.radius = radius;
         this.velocity = velocity;
@@ -28,7 +30,7 @@ public class Roboter implements IRobot{
     @Override
     public void setInitialPose(int posX, int posY, double orientation) {
         this.posX=posX;
-        this.posY=posY;
+        this.posY=400-posY;
         this.orientation=orientation;
     }
     public void setOrientation(double orientation){
