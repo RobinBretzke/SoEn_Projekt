@@ -37,7 +37,7 @@ public class RobotGUI extends JFrame {
         //(pDrawPanel.setPreferredSize(new Dimension(env.getWidth(), env.getHeight()));
     }
 
-    Validator val=new Validator(env);
+
 
     public void setRobot(Roboter roboter) {
         this.roboter =roboter;
@@ -53,6 +53,7 @@ public class RobotGUI extends JFrame {
         updateThread = new Thread(new Runnable() {
             @Override
             public void run() {
+                Validator val=new Validator(env);
                 while (true) {
                     roboter.move(deltaT);
                     repaint();
