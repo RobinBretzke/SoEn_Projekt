@@ -37,6 +37,8 @@ public class RobotGUI extends JFrame {
         //(pDrawPanel.setPreferredSize(new Dimension(env.getWidth(), env.getHeight()));
     }
 
+    Validator val=new Validator(env);
+
     public void setRobot(Roboter roboter) {
         this.roboter =roboter;
         startCalculating();
@@ -54,6 +56,7 @@ public class RobotGUI extends JFrame {
                 while (true) {
                     roboter.move(deltaT);
                     repaint();
+                    val.checkCollosion(roboter);
                     try {
                         Thread.sleep((long) (deltaT * 1000));
                     } catch (InterruptedException ex) {

@@ -38,7 +38,9 @@ public class Validator {
             // check intersection
             Rectangle2D objRect = obj.getRectangle();
             if(aBot.intersects(objRect)){
+                System.out.println("Collision");
                 return obj;
+
             }
         }
         return null;
