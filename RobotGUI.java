@@ -54,10 +54,23 @@ public class RobotGUI extends JFrame {
             @Override
             public void run() {
                 Validator val=new Validator(env);
+
                 while (true) {
                     roboter.move(deltaT);
                     repaint();
-                    val.checkCollosion(roboter);
+                    System.out.println(roboter.getPosX());
+                    System.out.println(roboter.getPosY());
+                    EnvironmentObject obj=val.checkCollosion(roboter);
+                    if (obj!=null){
+                        roboter.setVelocity(0);
+                        System.out.println(obj.getX());
+                        System.out.println(obj.getY());
+                        break;
+                    }
+                    if (val.checkTargetZone(roboter)) {
+                        System.out.println("Target reached");
+                        break;
+                    }
                     try {
                         Thread.sleep((long) (deltaT * 1000));
                     } catch (InterruptedException ex) {
@@ -77,19 +90,15 @@ public class RobotGUI extends JFrame {
         if (key == KeyEvent.VK_LEFT) {
             double orientation = roboter.getOrientation() + orientationIncrement;
             roboter.setOrientation(normalizeOrientation(orientation));
-            System.out.println("Left");
         } else if (key == KeyEvent.VK_RIGHT) {
             double orientation = roboter.getOrientation() - orientationIncrement;
             roboter.setOrientation(normalizeOrientation(orientation));
-            System.out.println(("Right"));
         } else if (key == KeyEvent.VK_UP) {
             int velocity = roboter.getVelocity();
             roboter.setVelocity(velocity + velocityIncrement);
-            System.out.println(("Up"));
         } else if (key == KeyEvent.VK_DOWN) {
             int velocity = roboter.getVelocity();
             roboter.setVelocity(velocity - velocityIncrement);
-            System.out.println("Down");
         }
     }
 
