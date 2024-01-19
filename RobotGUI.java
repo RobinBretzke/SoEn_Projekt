@@ -13,6 +13,7 @@ public class RobotGUI extends JFrame {
     private JPanel pDrawPanel;
     private JScrollPane spInfo;
     private JScrollPane spStatus;
+    private JTextArea taRobotStatus;
     private Roboter roboter;
     private Thread updateThread;
     private final double orientationIncrement=5;
@@ -157,7 +158,7 @@ public class RobotGUI extends JFrame {
                 statusStr += "Orientierung: " + orientation + "°\n";
                 statusStr += "Geschwindigkeit: " + velocity + " Pixel/s\n";
 
-                //taRobotStatus.setText(statusStr);
+                taRobotStatus.setText(statusStr);
 
 
                 g.setColor(color);

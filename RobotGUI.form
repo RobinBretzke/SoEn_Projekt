@@ -40,7 +40,15 @@
         </constraints>
         <properties/>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="8f681" class="javax.swing.JTextArea" binding="taRobotStatus">
+            <constraints/>
+            <properties>
+              <editable value="false"/>
+              <enabled value="false"/>
+            </properties>
+          </component>
+        </children>
       </scrollpane>
       <component id="a6a43" class="javax.swing.JLabel">
         <constraints>
