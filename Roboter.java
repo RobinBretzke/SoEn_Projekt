@@ -18,7 +18,7 @@ public class Roboter implements IRobot{
     public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color, LinkedList<Sensor> Sensoren) {
 
         this.posX = posX;
-        this.posY = 400-posY;
+        this.posY = posY;
         this.orientation = orientation;
         this.radius = radius;
         this.velocity = velocity;
@@ -61,7 +61,7 @@ public class Roboter implements IRobot{
     }
     @Override
     public int getPosY() {
-        return posY;
+        return 400-posY;
     }
     @Override
     public double getOrientation() {
@@ -83,6 +83,7 @@ public class Roboter implements IRobot{
         int deltaX = (int)(deltaT*velocity*Math.cos(orientation/180.*Math.PI));
         int deltaY = (int)(deltaT*velocity*Math.sin(orientation/180.*Math.PI));
 
+
         // Zusatzaufgabe: Verhindern des Verschwindens
 
         // Prüfen, ob neue Position außerhalb der Fläche wäre.
@@ -95,6 +96,8 @@ public class Roboter implements IRobot{
         else{
             this.posX = posX + deltaX;
             this.posY = posY + deltaY;
+
+
         }
     }
 

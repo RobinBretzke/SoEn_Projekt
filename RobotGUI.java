@@ -60,6 +60,8 @@ public class RobotGUI extends JFrame {
                     roboter.move(deltaT);
                     repaint();
                     EnvironmentObject obj=val.checkCollosion(roboter);
+                    System.out.println("PosX"+ roboter.getPosX());
+                    System.out.println("PosY "+roboter.getPosY());
                     if (obj!=null){
                         roboter.setVelocity(0);
                         System.out.println("PosX "+obj.getX());
@@ -148,7 +150,7 @@ public class RobotGUI extends JFrame {
                 Color color = roboter.getColor();
                 int posX = roboter.getPosX();
                 int posY = roboter.getPosY();
-                posY = pDrawPanel.getHeight() - posY;
+                //posY = pDrawPanel.getHeight() - posY;
                 double orientation = roboter.getOrientation();
                 int velocity = roboter.getVelocity();
                 int diameter = roboter.getRadius();
