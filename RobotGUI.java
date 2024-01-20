@@ -60,14 +60,14 @@ public class RobotGUI extends JFrame {
                     roboter.move(deltaT);
                     repaint();
                     EnvironmentObject obj=val.checkCollosion(roboter);
-                    System.out.println("PosX"+ roboter.getPosX());
-                    System.out.println("PosY "+roboter.getPosY());
+                    System.out.println("Robot PosX "+ roboter.getPosX());
+                    System.out.println("Robot PosY "+roboter.getPosY());
                     if (obj!=null){
                         roboter.setVelocity(0);
-                        System.out.println("PosX "+obj.getX());
-                        System.out.println("PosY "+obj.getY());
-                        System.out.println("Width "+obj.getWidth());
-                        System.out.println("Lengh "+obj.getLength());
+                        System.out.println("Hinderniss PosX "+obj.getX());
+                        System.out.println("Hinderniss PosY "+obj.getY());
+                        System.out.println("Hinderniss Width "+obj.getWidth());
+                        System.out.println("Hinderniss Lengh "+obj.getLength());
                         break;
 
                     }
@@ -131,13 +131,12 @@ public class RobotGUI extends JFrame {
                     int posY=environmentObject.getY();
                     int width=environmentObject.getWidth();
                     int length=environmentObject.getLength();
-                    double rotation=environmentObject.getOrientation();
                     Color color=environmentObject.getColor();
                     Graphics2D g2d=(Graphics2D)g;
-                    Rectangle2D rect = environmentObject.getRectangle();
+
 
                     AffineTransform transform=new AffineTransform();
-                    transform.rotate(rotation, posX-width/2,posY-length/2);
+                    transform.rotate(-environmentObject.getOrientation(), environmentObject.getX(), environmentObject.getY());
                     g2d.setTransform(transform);
                     g.setColor(color);
                     g.fillRect(posX,posY,width,length);
