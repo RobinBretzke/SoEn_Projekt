@@ -18,11 +18,12 @@ import java.util.Scanner;
 
 public class Environment {
 
+    public static SensorData simulateSensorData;
     private final int width;
     private final int height;
     private String name;
     private List<EnvironmentObject> objects = new LinkedList<>();
-    private List<LineSegment2D_F64> objectSegments = new LinkedList<>();
+    private static final List<LineSegment2D_F64> objectSegments = new LinkedList<>();
 
 
     public Environment(String name, int width, int height) {
@@ -34,7 +35,7 @@ public class Environment {
 
 
 
-    protected List<SensorData> simulateSensorData(IRobot r, BaseSensor s){
+    protected static List<SensorData> simulateSensorData(IRobot r, BaseSensor s){
         List<SensorData> sensData = new LinkedList<>();
         int xr = r.getPosX();
         int yr = r.getPosY();

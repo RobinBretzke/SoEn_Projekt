@@ -11,4 +11,15 @@ public class AutomatischeSteuerung {
         this.sensoren = roboter.getSensoren();
     }
 
+    public void steuereDurchParcours() {
+        //while (true) {
+            // Aktuelle Sensorwerte abrufen
+            for (Sensor sensor : sensoren) {
+                SensorData sensorData = (SensorData) Environment.simulateSensorData(roboter,sensor);
+            }
+                // Hier könnten verschiedene Logiken für die Steuerung basierend auf den Sensorwerten implementiert werden
+                roboter.setVelocity(5);
+                roboter.move(0.1);
+        }
+    //}
 }
