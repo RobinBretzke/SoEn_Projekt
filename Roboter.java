@@ -13,7 +13,7 @@ public class Roboter implements IRobot{
     private int velocity;
     private java.awt.Color color;
 
-    private LinkedList<Sensor> Sensoren;
+    private  LinkedList<Sensor> Sensoren;
 
     public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color, LinkedList<Sensor> Sensoren) {
 
@@ -25,6 +25,8 @@ public class Roboter implements IRobot{
         this.color=color;
         this.Sensoren=Sensoren;
     }
+
+
 
     //Setter
     @Override
@@ -72,6 +74,9 @@ public class Roboter implements IRobot{
         return velocity;
     }
     public java.awt.Color getColor(){return color;}
+    public LinkedList<Sensor> getSensoren() {
+        return Sensoren;
+    }
     @Override
     public int getRadius() {
         return radius;
