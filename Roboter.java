@@ -12,7 +12,6 @@ public class Roboter implements IRobot{
     private int radius;
     private int velocity;
     private java.awt.Color color;
-
     private  LinkedList<Sensor> Sensoren;
 
     public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color, LinkedList<Sensor> Sensoren) {
