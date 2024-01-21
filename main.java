@@ -13,7 +13,7 @@ public class main {
         LinkedList<Sensor> Sensoren = new LinkedList<>();
         Sensor Sensor1 = new Sensor(0,Math.PI/4,10);
         Sensoren.add(Sensor1);
-        Roboter Roboter= new Roboter(100,200,0,50,0, Color.red,Sensoren);
+        Roboter Roboter= new Roboter(300,200,0,50,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
         robotGUI.setEnvironment(env);
     }
