@@ -10,10 +10,10 @@ public class main {
         java.io.File file=new java.io.File("environment.txt");Environment env=EnvironmentLoader.loadFromFile(file);
         RobotGUI robotGUI=new RobotGUI("Roboter GUI", env);
         robotGUI.setVisible(true);
-        LinkedList<Sensor> Sensoren = new LinkedList<>();
-        Sensor Sensor1 = new Sensor(0,Math.PI/4,10);
+        LinkedList<BaseSensor> Sensoren = new LinkedList<>();
+        Sensor Sensor1 = new Sensor(0,Math.PI/8,100);
         Sensoren.add(Sensor1);
-        Roboter Roboter= new Roboter(150,100,0,20,10, Color.red,Sensoren);
+        Roboter Roboter= new Roboter(50,150,0,20,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
         robotGUI.setEnvironment(env);
         AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(Roboter);
