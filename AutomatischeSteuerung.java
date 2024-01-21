@@ -4,22 +4,37 @@ import java.util.List;
 
 public class AutomatischeSteuerung {
     private Roboter roboter;
-    private List<Sensor> sensoren;
+    private Environment environment;
 
     public AutomatischeSteuerung(Roboter roboter) {
         this.roboter = roboter;
-        this.sensoren = roboter.getSensoren();
     }
 
     public void steuereDurchParcours() {
-        //while (true) {
+        while (true) {
             // Aktuelle Sensorwerte abrufen
-            for (Sensor sensor : sensoren) {
-                SensorData sensorData = (SensorData) Environment.simulateSensorData(roboter,sensor);
+            environment.simulateSensorData(roboter);
+            List<Sensor> sensors = roboter.getSensoren();
+
+            boolean Hindernis = false;
+            for (BaseSensor sensor : sensors) {
+                List<SensorData> sensorDataList = Environment.simulateSensorData(roboter,sensor);
+                for (SensorData sensorData : sensorDataList) {
+                    if (sensorData.getDistance() < sensor.getMaxRange()) {
+                        Hindernis = true;
+                        break;
+                    }
+                }
+                if (Hindernis) {
+                    break;
+                }
             }
-                // Hier könnten verschiedene Logiken für die Steuerung basierend auf den Sensorwerten implementiert werden
-                roboter.setVelocity(5);
-                roboter.move(0.1);
+            if (Hindernis) {
+                double newOrientation = roboter.getOrientation() + Math.PI/2;
+                roboter.setOrientation(newOrientation);
+            }
+            roboter.move(0.1);
+
         }
-    //}
+    }
 }

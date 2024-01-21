@@ -16,6 +16,5 @@ public class Sensor extends BaseSensor{
 
     @Override
     public void measurementFromEnvironment(List<SensorData> data) {
-
     }
 }

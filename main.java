@@ -13,8 +13,10 @@ public class main {
         LinkedList<Sensor> Sensoren = new LinkedList<>();
         Sensor Sensor1 = new Sensor(0,Math.PI/4,10);
         Sensoren.add(Sensor1);
-        Roboter Roboter= new Roboter(150,100,0,20,0, Color.red,Sensoren);
+        Roboter Roboter= new Roboter(150,100,0,20,10, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
         robotGUI.setEnvironment(env);
+        AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(Roboter);
+        automatischeSteuerung.steuereDurchParcours();
     }
 }

@@ -12,9 +12,9 @@ public class Roboter implements IRobot{
     private int radius;
     private int velocity;
     private java.awt.Color color;
-    private  LinkedList<Sensor> Sensoren;
+    private static List<Sensor> sensoren;
 
-    public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color, LinkedList<Sensor> Sensoren) {
+    public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color, LinkedList<Sensor> sensoren) {
 
         this.posX = posX;
         this.posY = 400-posY;
@@ -22,10 +22,13 @@ public class Roboter implements IRobot{
         this.radius = radius;
         this.velocity = velocity;
         this.color=color;
-        this.Sensoren=Sensoren;
+        this.sensoren=sensoren;
     }
 
 
+    public static List<Sensor> getSensoren() {
+        return sensoren;
+    }
 
     //Setter
     @Override
@@ -46,6 +49,7 @@ public class Roboter implements IRobot{
     //Getter
     @Override
     public List<BaseSensor> getSensors() {
+
         return null;
     }
     @Override
@@ -73,9 +77,6 @@ public class Roboter implements IRobot{
         return velocity;
     }
     public java.awt.Color getColor(){return color;}
-    public LinkedList<Sensor> getSensoren() {
-        return Sensoren;
-    }
     @Override
     public int getRadius() {
         return radius;
