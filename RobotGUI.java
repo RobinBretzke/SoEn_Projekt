@@ -60,10 +60,11 @@ public class RobotGUI extends JFrame {
                     roboter.move(deltaT);
                     repaint();
                     EnvironmentObject obj=val.checkCollosion(roboter);
-                    System.out.println("Robot PosX "+ roboter.getPosX());
-                    System.out.println("Robot PosY "+roboter.getPosY());
+
                     if (obj!=null){
                         roboter.setVelocity(0);
+                        System.out.println("Robot PosX "+ roboter.getPosX());
+                        System.out.println("Robot PosY "+roboter.getPosY());
                         System.out.println("Hinderniss PosX "+obj.getX());
                         System.out.println("Hinderniss PosY "+obj.getY());
                         System.out.println("Hinderniss Width "+obj.getWidth());
