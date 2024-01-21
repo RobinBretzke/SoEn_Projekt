@@ -16,5 +16,6 @@ public class main {
         Roboter Roboter= new Roboter(150,100,0,20,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
         robotGUI.setEnvironment(env);
+        AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(Roboter);
     }
 }

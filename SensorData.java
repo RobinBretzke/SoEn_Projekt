@@ -1,7 +1,7 @@
 package thu.robots.components;
 
 public class SensorData {
-    private double angle;
+    private static double angle;
     private int distance;
     private BaseSensor relatedSensor;
 
@@ -18,10 +18,9 @@ public class SensorData {
     }
 
     /**
-     *
      * @return Winkel in Radiant relativ zum Sensor
      */
-    public double getAngle() {
+    public static double getAngle() {
         return angle;
     }
 
