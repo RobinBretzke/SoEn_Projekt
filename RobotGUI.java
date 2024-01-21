@@ -21,7 +21,7 @@ public class RobotGUI extends JFrame {
     private Environment env;
     private double deltaT = 0.1;
     private List<EnvironmentObject> environmentObjects;
-    private EnvironmentObject environmentObject;
+    private EnvironmentObject obj;
 
 
     public RobotGUI(String title, Environment env) {
@@ -126,23 +126,17 @@ public class RobotGUI extends JFrame {
 
                 environmentObjects=env.getObjects();
                 for (int i=0;i<env.getObjects().size();i++){
-                    environmentObject=environmentObjects.get(i);
-                    int posX=environmentObject.getX();
-                    int posY=environmentObject.getY();
-                    int width=environmentObject.getWidth();
-                    int length=environmentObject.getLength();
-                    Color color=environmentObject.getColor();
-                    Graphics2D g2d=(Graphics2D)g;
-
-
+                    obj =environmentObjects.get(i);
+                    Color color=obj.getColor();
+                    Rectangle2D rechteck=obj.getRectangle();
+                    double orientation=obj.getOrientation();
+                    Graphics2D g2d=(Graphics2D) g;
                     AffineTransform transform=new AffineTransform();
-                    transform.rotate(-environmentObject.getOrientation(), environmentObject.getX(), environmentObject.getY());
+                    transform.rotate(orientation,rechteck.getX()+rechteck.getWidth()/2, rechteck.getY()+rechteck.getHeight()/2);
                     g2d.setTransform(transform);
                     g.setColor(color);
-                    g.fillRect(posX,posY,width,length);
+                    g.fillRect((int)rechteck.getX(),(int)rechteck.getY(),(int)rechteck.getWidth(),(int)rechteck.getHeight());
                     g2d.setTransform(new AffineTransform());
-
-
                 }
 
 
@@ -152,7 +146,7 @@ public class RobotGUI extends JFrame {
                 //posY = pDrawPanel.getHeight() - posY;
                 double orientation = roboter.getOrientation();
                 int velocity = roboter.getVelocity();
-                int diameter = roboter.getRadius();
+                int diameter = 2*roboter.getRadius();
 
 
                 String statusStr = "X: " + posX + "\n";

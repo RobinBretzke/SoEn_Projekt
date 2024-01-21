@@ -17,7 +17,7 @@ public class Roboter implements IRobot{
     public Roboter(int posX, int posY, int orientation, int radius, int velocity, java.awt.Color color, LinkedList<Sensor> Sensoren) {
 
         this.posX = posX;
-        this.posY = posY;
+        this.posY = 400-posY;
         this.orientation = orientation;
         this.radius = radius;
         this.velocity = velocity;
