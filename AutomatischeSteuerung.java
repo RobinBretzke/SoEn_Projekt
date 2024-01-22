@@ -11,11 +11,12 @@ public class AutomatischeSteuerung {
     }
 
     public void steuereDurchParcours() {
+        List<BaseSensor> sensors = roboter.getSensors();
         while (true) {
 
             // Aktuelle Sensorwerte abrufen
             //environment.simulateSensorData(roboter);
-            List<BaseSensor> sensors = roboter.getSensors();
+
 
             boolean Hindernis = false;
             for (BaseSensor sensor : sensors) {
@@ -39,8 +40,6 @@ public class AutomatischeSteuerung {
                     newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
                 }
                 roboter.setOrientation(newOrientation);
-
-            }else {
 
             }
 
