@@ -7,7 +7,8 @@ import java.util.LinkedList;
 
 public class main {
     public static void main(String[] args) {
-        java.io.File file=new java.io.File("environment.txt");Environment env=EnvironmentLoader.loadFromFile(file);
+        java.io.File file=new java.io.File("environment.txt");
+        Environment env=EnvironmentLoader.loadFromFile(file);
         RobotGUI robotGUI=new RobotGUI("Roboter GUI", env);
         robotGUI.setVisible(true);
         LinkedList<BaseSensor> Sensoren = new LinkedList<>();
@@ -18,5 +19,6 @@ public class main {
         robotGUI.setEnvironment(env);
         AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(Roboter);
         automatischeSteuerung.steuereDurchParcours();
+        //TODO Env übergeben
     }
 }

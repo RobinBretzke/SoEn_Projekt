@@ -16,8 +16,6 @@ public class RobotGUI extends JFrame {
     private JTextArea taRobotStatus;
     private Roboter roboter;
     private Thread updateThread;
-    private final double orientationIncrement=5;
-    private final int velocityIncrement = 10;
     private Environment env;
     private double deltaT = 0.1;
     private List<EnvironmentObject> environmentObjects;
@@ -37,8 +35,6 @@ public class RobotGUI extends JFrame {
         pack();
 
     }
-
-
 
     public void setRobot(Roboter roboter) {
         this.roboter =roboter;
@@ -93,17 +89,17 @@ public class RobotGUI extends JFrame {
         }
         int key = evt.getKeyCode();
         if (key == KeyEvent.VK_LEFT) {
-            double orientation = roboter.getOrientation() + orientationIncrement;
+            double orientation = roboter.getOrientation() + roboter.getOrientationIncrement();
             roboter.setOrientation(normalizeOrientation(orientation));
         } else if (key == KeyEvent.VK_RIGHT) {
-            double orientation = roboter.getOrientation() - orientationIncrement;
+            double orientation = roboter.getOrientation() - roboter.getOrientationIncrement();
             roboter.setOrientation(normalizeOrientation(orientation));
         } else if (key == KeyEvent.VK_UP) {
             int velocity = roboter.getVelocity();
-            roboter.setVelocity(velocity + velocityIncrement);
+            roboter.setVelocity(velocity + roboter.getVelocityIncrement());
         } else if (key == KeyEvent.VK_DOWN) {
             int velocity = roboter.getVelocity();
-            roboter.setVelocity(velocity - velocityIncrement);
+            roboter.setVelocity(velocity - roboter.getVelocityIncrement());
         }
     }
 
@@ -185,4 +181,6 @@ public class RobotGUI extends JFrame {
     }
 
 
-}
+    }
+
+
