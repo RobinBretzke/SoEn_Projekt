@@ -23,6 +23,7 @@ public class AutomatischeSteuerung {
                 for (SensorData sensorData : sensorDataList) {
                     if (sensorData.getDistance() < sensor.getMaxRange()) {
                         Hindernis = true;
+                        System.out.println("Hinderniss erkannt");
                         break;
                     }
                 }
@@ -43,8 +44,8 @@ public class AutomatischeSteuerung {
 
             }
 
-            //roboter.move(0.1);
-            //roboter.setVelocity(10);
+            roboter.move(0.1);
+            roboter.setVelocity(10);
 
         }
     }
