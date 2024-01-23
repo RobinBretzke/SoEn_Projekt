@@ -12,13 +12,14 @@ public class AutomatischeSteuerung {
 
     public void steuereDurchParcours() {
         List<BaseSensor> sensors = roboter.getSensors();
+        boolean Hindernis = false;
         while (true) {
 
             // Aktuelle Sensorwerte abrufen
             //environment.simulateSensorData(roboter);
 
 
-            boolean Hindernis = false;
+
             for (BaseSensor sensor : sensors) {
                 List<SensorData> sensorDataList = Environment.simulateSensorData(roboter,sensor);
                 for (SensorData sensorData : sensorDataList) {
@@ -36,16 +37,18 @@ public class AutomatischeSteuerung {
                 double newOrientation;
                 if (SensorData.getAngle() >= 0 && SensorData.getAngle() < Math.PI){
                     newOrientation = roboter.getOrientation() + roboter.getOrientationIncrement();
+                    System.out.println("Drehe nach unten");
                 } else {
-                    newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+                   newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+                    System.out.println("Drehe nach oben");
                 }
                 roboter.setOrientation(newOrientation);
+            } else {
+
+                roboter.move(0.1);
 
             }
-
-            roboter.move(0.1);
             roboter.setVelocity(10);
-
         }
     }
 }

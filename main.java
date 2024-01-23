@@ -12,7 +12,7 @@ public class main {
         RobotGUI robotGUI=new RobotGUI("Roboter GUI", env);
         robotGUI.setVisible(true);
         LinkedList<BaseSensor> Sensoren = new LinkedList<>();
-        Sensor Sensor1 = new Sensor(0,Math.PI/8,100);
+        Sensor Sensor1 = new Sensor(0,Math.PI/8,1);
         Sensoren.add(Sensor1);
         Roboter Roboter= new Roboter(440,250,0,20,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
