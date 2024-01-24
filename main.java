@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class main {
+    /**
+     * Instanziiert das Environment, die RobotGUI und den Sensor.
+     * @param args
+     */
     public static void main(String[] args) {
         java.io.File file=new java.io.File("TestEnvironment.txt");
         Environment env=EnvironmentLoader.loadFromFile(file);
