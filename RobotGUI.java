@@ -2,6 +2,8 @@ package thu.robots.components;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
@@ -14,6 +16,7 @@ public class RobotGUI extends JFrame {
     private JScrollPane spInfo;
     private JScrollPane spStatus;
     private JTextArea taRobotStatus;
+    private JTextArea taInfo;
     private Roboter roboter;
     private Thread updateThread;
     private Environment env;
@@ -21,7 +24,11 @@ public class RobotGUI extends JFrame {
     private List<EnvironmentObject> environmentObjects;
     private EnvironmentObject obj;
 
-
+    /**
+     * Setzt das Environment auf die GUI und den Titel. Zudem wird der default close operater auf "Exit on close" gesetzt
+     * @param title
+     * @param env
+     */
     public RobotGUI(String title, Environment env) {
         this.env=env;
         setTitle(title);
@@ -36,15 +43,29 @@ public class RobotGUI extends JFrame {
 
     }
 
+    /**
+     * Setzt den Roboter und startet die Methode "startCalculating"
+     * @param roboter
+     */
     public void setRobot(Roboter roboter) {
         this.roboter =roboter;
         startCalculating();
     }
 
+    /**
+     * Setzt das Environment
+     * @param env
+     */
     public void setEnvironment(Environment env){
         this.env=env;
     }
 
+    /**
+     * Ruft die Methode "move" in der Roboter Klasse auf. Zudem wird ein neuer Validator erstellt, welcher überprüft ob der Roboter
+     * mit einem Hindernis zusammengestoßen ist.Falls ja, wird die geschwindigkeit des Roboters auf Null gesetzt und auf dem Panel "Roboter Info"
+     * Medung "Kollision" ausgegeben. Wird die linke Seite der Oberfläche erreicht, wird die Meldung
+     * "Ziel Erreicht" ausgegeben.
+     */
     private void startCalculating() {
 
         updateThread = new Thread(new Runnable() {
@@ -59,17 +80,12 @@ public class RobotGUI extends JFrame {
 
                     if (obj!=null){
                         roboter.setVelocity(0);
-                        System.out.println("Robot PosX "+ roboter.getPosX());
-                        System.out.println("Robot PosY "+roboter.getPosY());
-                        System.out.println("Hinderniss PosX "+obj.getX());
-                        System.out.println("Hinderniss PosY "+obj.getY());
-                        System.out.println("Hinderniss Width "+obj.getWidth());
-                        System.out.println("Hinderniss Lengh "+obj.getLength());
+                        taInfo.setText("Kollision");
                         break;
 
                     }
                     if (val.checkTargetZone(roboter)) {
-                        System.out.println("Target reached");
+                        taInfo.setText("Ziel erreicht");
                         break;
                     }
                     try {
@@ -83,6 +99,14 @@ public class RobotGUI extends JFrame {
         updateThread.start();
     }
 
+    /**
+     * Bestimmt die Events bei bestimmten Tastendrücke.
+     * Pfeiltaste Links: Roboter dreht um 5° nach Links
+     * Pfeiltaste Rechts: Roboter dreht um 5° nach Rechts
+     * Pfeiltaste Hoch: Roboter beschleunigt um 10 Pixel
+     * Pfeiltaste Runter: Roboter verzögert um 10 Pixel
+     * @param evt
+     */
     private void formKeyPressed(KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         if (roboter == null) {
             return;
@@ -103,8 +127,10 @@ public class RobotGUI extends JFrame {
         }
     }
 
-
-
+    /**
+     * Zeichnet die Grafischen Inhalte auf der GUI mit hilfe der Klasse "EnvironmentLoader".
+     * Zudem wird String erstellt, welcher auf dem Fenster "Roboter Status" ausgegeben wird
+     */
     private void createUIComponents() {
         pDrawPanel = new JPanel() {
             @Override
@@ -152,27 +178,9 @@ public class RobotGUI extends JFrame {
                 g.setColor(Color.BLACK);
                 g.fillArc(posX - diameter / 2, posY - diameter / 2, diameter, diameter, -(int)orientation -45, 90);
 
-
-                int maxX = pDrawPanel.getWidth() + diameter / 2;
-                int minX = -diameter / 2;
-                int maxY = pDrawPanel.getHeight() + diameter / 2;
-                int minY = -diameter / 2;
-/*
-                if (posX > maxX || posX < minX || posY > maxY || posY < minY) {
-                    updateThread.interrupt();
-                    JOptionPane.showMessageDialog(this, "Der Roboter ist verschwunden!", "Roboter ist verschwunden", JOptionPane.ERROR_MESSAGE);
-                }
-
- */
             }
         };
-
     }
-
-    public double getDeltaT() {
-        return deltaT;
-    }
-
 
     }
 

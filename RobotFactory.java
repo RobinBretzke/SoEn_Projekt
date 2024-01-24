@@ -11,6 +11,7 @@ public class RobotFactory extends AbstractRobotFactory{
         Sensor Sensor1 = new Sensor(0,Math.PI/4,10);
         Sensoren.add(Sensor1);
         Roboter Roboter=new Roboter(10,10,20,20,0, Color.red, Sensoren);
+        Roboter.activateAutonomousStearing();
         return Roboter;
     }
 }
