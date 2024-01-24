@@ -14,7 +14,7 @@ public class main {
         LinkedList<BaseSensor> Sensoren = new LinkedList<>();
         Sensor Sensor1 = new Sensor(0,Math.PI/8,1);
         Sensoren.add(Sensor1);
-        Roboter Roboter= new Roboter(440,250,0,20,0, Color.red,Sensoren);
+        Roboter Roboter= new Roboter(50,200,0,20,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
         robotGUI.setEnvironment(env);
         AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(Roboter);

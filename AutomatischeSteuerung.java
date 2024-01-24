@@ -13,12 +13,12 @@ public class AutomatischeSteuerung {
         for (BaseSensor sensor : sensors) {
             List<SensorData> sensorDataList = Environment.simulateSensorData(roboter, sensor);
             for (SensorData sensorData : sensorDataList) {
-                if (sensorData.getDistance() < sensor.getMaxRange()) {
+                if (sensorData.getDistance() < 100) {
                     System.out.println("Hinderniss erkannt");
                     roboter.setVelocity(0);
-                    break;
+                    return sensorData;
                 }
-                return sensorData;
+
 
             }
             return null;
@@ -36,12 +36,15 @@ public class AutomatischeSteuerung {
             List<BaseSensor> sensors = roboter.getSensors();
 
             SensorData sensorData = lookForKontact(sensors);
-
-
+            double winkel=roboter.normalizeOrientation(Math.toDegrees(sensorData.getAngle()));
                 if (sensorData != null) {
                     double newOrientation;
-                    if (SensorData.getAngle() >= 0 && SensorData.getAngle() < Math.PI) {
 
+                    if (winkel <=0) {
+                        while (lookForKontact(sensors)!=null){
+                            newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+                            roboter.setOrientation(newOrientation);
+                        }
                         newOrientation = roboter.getOrientation() + roboter.getOrientationIncrement();
                         System.out.println("Drehe nach unten");
                     } else {
