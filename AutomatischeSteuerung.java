@@ -46,10 +46,10 @@ public class AutomatischeSteuerung {
                             roboter.setOrientation(newOrientation);
                         }
                         newOrientation = roboter.getOrientation() + roboter.getOrientationIncrement();
-                        System.out.println("Drehe nach unten");
+                        //System.out.println("Drehe nach unten");
                     } else {
                         newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
-                        System.out.println("Drehe nach oben");
+                        //System.out.println("Drehe nach oben");
                     }
                     roboter.setOrientation(newOrientation);
                 } else {
@@ -58,6 +58,13 @@ public class AutomatischeSteuerung {
 
                 }
             roboter.setVelocity(10);
+            System.out.println(roboter.getPosX());
+            System.out.println(roboter.getPosY());
+            try {
+                Thread.sleep((long) (0.1 * 1000));
+            } catch (InterruptedException ex) {
+                break;
+            }
             }
 
         }
