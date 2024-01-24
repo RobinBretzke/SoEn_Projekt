@@ -19,7 +19,6 @@ public class AutomatischeSteuerung {
                     return sensorData;
                 }
 
-
             }
             return null;
         }
@@ -43,12 +42,28 @@ public class AutomatischeSteuerung {
                     if (winkel <=0) {
                         while (lookForKontact(sensors)!=null){
                             newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+                            newOrientation=roboter.normalizeOrientation(newOrientation);
                             roboter.setOrientation(newOrientation);
+                            try {
+                                Thread.sleep((long) (0.1 * 1000));
+                            } catch (InterruptedException ex) {
+                                break;
+                            }
                         }
                         newOrientation = roboter.getOrientation() + roboter.getOrientationIncrement();
                         //System.out.println("Drehe nach unten");
                     } else {
                         newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+                        while (lookForKontact(sensors)!=null) {
+                            newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+                            newOrientation=roboter.normalizeOrientation(newOrientation);
+                            roboter.setOrientation(newOrientation);
+                            try {
+                                Thread.sleep((long) (0.1 * 1000));
+                            } catch (InterruptedException ex) {
+                                break;
+                            }
+                        }
                         //System.out.println("Drehe nach oben");
                     }
                     roboter.setOrientation(newOrientation);
@@ -57,9 +72,10 @@ public class AutomatischeSteuerung {
                     roboter.move(0.1);
 
                 }
-            roboter.setVelocity(10);
+
             System.out.println(roboter.getPosX());
             System.out.println(roboter.getPosY());
+            roboter.setVelocity(10);
             try {
                 Thread.sleep((long) (0.1 * 1000));
             } catch (InterruptedException ex) {

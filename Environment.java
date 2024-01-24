@@ -103,6 +103,7 @@ public class Environment {
             List<SensorData> sd = simulateSensorData(r, s);
             data.addAll(sd);
             s.measurementFromEnvironment(sd);
+            s.measurementFromEnvironment(sd);
         }
     }
 
