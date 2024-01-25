@@ -9,11 +9,12 @@ public class AutomatischeSteuerung {
     public AutomatischeSteuerung(Roboter roboter) {
         this.roboter = roboter;
     }
+
     public SensorData lookForKontact(List<BaseSensor> sensors ) {
         for (BaseSensor sensor : sensors) {
             List<SensorData> sensorDataList = Environment.simulateSensorData(roboter, sensor);
             for (SensorData sensorData : sensorDataList) {
-                if (sensorData.getDistance() < 100) {
+                if (sensorData.getDistance() < sensor.getMaxRange()) {
                     System.out.println("Hinderniss erkannt");
                     roboter.setVelocity(0);
                     return sensorData;
@@ -75,7 +76,7 @@ public class AutomatischeSteuerung {
 
             System.out.println(roboter.getPosX());
             System.out.println(roboter.getPosY());
-            roboter.setVelocity(10);
+            roboter.setVelocity(20);
             try {
                 Thread.sleep((long) (0.1 * 1000));
             } catch (InterruptedException ex) {

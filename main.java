@@ -16,12 +16,14 @@ public class main {
         RobotGUI robotGUI=new RobotGUI("Roboter GUI", env);
         robotGUI.setVisible(true);
         LinkedList<BaseSensor> Sensoren = new LinkedList<>();
-        Sensor Sensor1 = new Sensor(0,Math.PI/8,1);
+        Sensor Sensor1 = new Sensor(0,2*Math.PI/3,10);
+        Sensor Sensor2 = new Sensor(0,Math.PI/4,5);
         Sensoren.add(Sensor1);
-        Roboter Roboter= new Roboter(367,200,0,20,0, Color.red,Sensoren);
+        Sensoren.add(Sensor2);
+        Roboter Roboter= new Roboter(100,200,0,20,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
         robotGUI.setEnvironment(env);
-        //Roboter.activateAutonomousStearing();
+        Roboter.activateAutonomousStearing();
 
     }
 }

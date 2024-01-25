@@ -13,7 +13,7 @@ public class Roboter implements IRobot{
     private int velocity;
     private java.awt.Color color;
     private static List<BaseSensor> sensoren;
-    private final double orientationIncrement=5;
+    private final double orientationIncrement=30;
     private final int velocityIncrement = 10;
 
     /**
