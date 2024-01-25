@@ -11,7 +11,7 @@ public class main {
      * @param args
      */
     public static void main(String[] args) {
-        java.io.File file=new java.io.File("environment.txt");
+        java.io.File file=new java.io.File("TestEnvironment.txt");
         Environment env=EnvironmentLoader.loadFromFile(file);
         RobotGUI robotGUI=new RobotGUI("Roboter GUI", env);
         robotGUI.setVisible(true);
@@ -26,7 +26,7 @@ public class main {
         Roboter Roboter= new Roboter(60,400,0,20,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
         robotGUI.setEnvironment(env);
-        Roboter.activateAutonomousStearing();
+        //Roboter.activateAutonomousStearing();
 
     }
 }
