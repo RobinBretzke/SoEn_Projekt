@@ -165,15 +165,11 @@ public class Roboter implements IRobot{
     @Override
     public void move(double deltaT) {
         // Berechnen der Wegstrecke
-        int deltaX = (int)(deltaT*velocity*Math.cos(orientation/180.*Math.PI));
-        int deltaY = (int)(deltaT*velocity*Math.sin(orientation/180.*Math.PI));
-
-        int radius = this.radius;
+        int deltaX = (int)(deltaT*velocity*Math.cos(Math.toRadians(orientation)));
+        int deltaY = (int)(deltaT*velocity*Math.sin(Math.toRadians(orientation)));
 
         this.posX = posX + deltaX;
         this.posY = posY + deltaY;
-
-
 
     }
 

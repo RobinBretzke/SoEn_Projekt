@@ -21,7 +21,7 @@ public class main {
         Roboter Roboter= new Roboter(367,200,0,20,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);
         robotGUI.setEnvironment(env);
-        Roboter.activateAutonomousStearing();
+        //Roboter.activateAutonomousStearing();
 
     }
 }
