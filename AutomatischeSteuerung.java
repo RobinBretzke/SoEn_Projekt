@@ -31,21 +31,21 @@ public class AutomatischeSteuerung {
     }
 
     public void steuereDurchParcours() {
-
+        List<BaseSensor> sensors = roboter.getSensors();
         while (true) {
 
             // Aktuelle Sensorwerte abrufen
             //environment.simulateSensorData(roboter);
-            List<BaseSensor> sensors = roboter.getSensors();
+
 
             SensorData sensorData = findeKontakt(sensors);
-            double winkel = roboter.normalizeOrientation(Math.toDegrees(sensorData.getAngle()));
+            double winkel = roboter.normalizeOrientation(sensorData.getAngle());
             if (sensorData != null) {
                 double newOrientation;
 
                 if (winkel <= 0) {
 
-                    newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+                    newOrientation = roboter.getOrientation() + roboter.getOrientationIncrement();
                     newOrientation = roboter.normalizeOrientation(newOrientation);
                     roboter.setOrientation(newOrientation);
                     try {
@@ -56,7 +56,7 @@ public class AutomatischeSteuerung {
 
 
                 } else {
-                    newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+                    //newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
 
                     newOrientation = roboter.getOrientation() - roboter.getOrientationIncrement();
                     newOrientation = roboter.normalizeOrientation(newOrientation);
@@ -75,8 +75,8 @@ public class AutomatischeSteuerung {
 
             }
 
-            System.out.println(roboter.getPosX());
-            System.out.println(roboter.getPosY());
+            //System.out.println(roboter.getPosX());
+            //System.out.println(roboter.getPosY());
             if (hindernis) {
                 roboter.setVelocity(0);
             } else {

@@ -14,6 +14,7 @@ public class Roboter implements IRobot{
     private java.awt.Color color;
     private static List<BaseSensor> sensoren;
     private final double orientationIncrement=30;
+    private final double orientationIncrementManuell=5;
     private final int velocityIncrement = 10;
 
     /**
@@ -187,6 +188,14 @@ public class Roboter implements IRobot{
      */
     public int getVelocityIncrement() {
         return velocityIncrement;
+    }
+
+    /**
+     * Gibt zurück um wieviel Grad sich der Roboter im manuellen Betrieb pro Tastendruck drehen soll
+     * @return
+     */
+    public double getOrientationIncrementManuell() {
+        return orientationIncrementManuell;
     }
 
     /**

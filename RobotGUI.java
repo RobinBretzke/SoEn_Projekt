@@ -113,10 +113,10 @@ public class RobotGUI extends JFrame {
         }
         int key = evt.getKeyCode();
         if (key == KeyEvent.VK_LEFT) {
-            double orientation = roboter.getOrientation() - roboter.getOrientationIncrement();
+            double orientation = roboter.getOrientation() - roboter.getOrientationIncrementManuell();
             roboter.setOrientation(roboter.normalizeOrientation(orientation));
         } else if (key == KeyEvent.VK_RIGHT) {
-            double orientation = roboter.getOrientation() + roboter.getOrientationIncrement();
+            double orientation = roboter.getOrientation() + roboter.getOrientationIncrementManuell();
             roboter.setOrientation(roboter.normalizeOrientation(orientation));
         } else if (key == KeyEvent.VK_UP) {
             int velocity = roboter.getVelocity();

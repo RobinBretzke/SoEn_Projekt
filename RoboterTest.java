@@ -1,14 +1,9 @@
 package thu.robots.components;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.awt.*;
 import java.util.LinkedList;
-
-
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RoboterTest {
     private Roboter roboter;
@@ -61,7 +56,7 @@ class RoboterTest {
     }
     @org.junit.jupiter.api.Test
     void testCollision(){
-        java.io.File file=new java.io.File("TestEnvironment.txt");
+        java.io.File file=new java.io.File("UnitTestEnvironment.txt");
         Environment env=EnvironmentLoader.loadFromFile(file);
         Validator val=new Validator(env);
         roboter.setInitialPose(457,100,0);
@@ -72,7 +67,7 @@ class RoboterTest {
 
     @org.junit.jupiter.api.Test
     void checkTargetZone(){
-        java.io.File file=new java.io.File("TestEnvironment.txt");
+        java.io.File file=new java.io.File("UnitTestEnvironment.txt");
         Environment env=EnvironmentLoader.loadFromFile(file);
         Validator val=new Validator(env);
         roboter.setInitialPose(800,300,0);
