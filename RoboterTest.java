@@ -1,11 +1,19 @@
 package thu.robots.components;
+
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+
 import java.awt.*;
 import java.util.LinkedList;
+
+
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class RoboterTest {
     private Roboter roboter;
 
+    @org.junit.jupiter.api.BeforeEach
     public void setup(){
         LinkedList<BaseSensor> Sensoren = new LinkedList<>();
         Sensor Sensor1 = new Sensor(0,Math.PI/8,1);
