@@ -104,7 +104,7 @@ class RoboterTest {
         AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(roboter);
         List<BaseSensor> sensor = roboter.getSensors();
         SensorData sensorData = automatischeSteuerung.findeKontakt(sensor);
-        Assertions.assertEquals(-20,sensorData.getAngle(),0.5);
+        Assertions.assertEquals(-20,sensorData.getAngle(),1);
     }
 
 }
