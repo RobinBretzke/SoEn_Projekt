@@ -83,7 +83,7 @@ public class Roboter implements IRobot{
 
     /**
      * Gibt die Liste der Sensoren zurück
-     * @return
+     * @return sensoren
      */
     @Override
     public List<BaseSensor> getSensors() {
@@ -92,7 +92,7 @@ public class Roboter implements IRobot{
 
     /**
      * Methode nicht Implementiert. return null
-     * @return
+     * @return null
      */
     @Override
     public Image getImage() {
@@ -110,7 +110,7 @@ public class Roboter implements IRobot{
 
     /**
      * Gibt die Position in X des Roboters zurück
-     * @return
+     * @return posX
      */
     @Override
     public int getPosX() {
@@ -119,7 +119,7 @@ public class Roboter implements IRobot{
 
     /**
      * Gibt die Position in Y des Roboters zurück
-     * @return
+     * @return posY
      */
     @Override
     public int getPosY() {
@@ -128,7 +128,7 @@ public class Roboter implements IRobot{
 
     /**
      * Gibt die Orientierung in Grad des Roboters zurück
-     * @return
+     * @return orientation
      */
     @Override
     public double getOrientation() {
@@ -137,7 +137,7 @@ public class Roboter implements IRobot{
 
     /**
      * Gibt die Geschwindigkeit des Roboters zurück
-     * @return
+     * @return velocity
      */
     @Override
     public int getVelocity() {
@@ -146,13 +146,13 @@ public class Roboter implements IRobot{
 
     /**
      * Gibt die Farbe des Roboters zurück
-     * @return
+     * @return color
      */
     public java.awt.Color getColor(){return color;}
 
     /**
      * Gibt den Radius des Roboters zurück
-     * @return
+     * @return radius
      */
     @Override
     public int getRadius() {
@@ -184,7 +184,7 @@ public class Roboter implements IRobot{
 
     /**
      * Gibt zurück, um wieviel Pixel sich die GEschwindigkeit des Roboters ändern soll
-     * @return
+     * @return orientationIncrement
      */
     public int getVelocityIncrement() {
         return velocityIncrement;
@@ -192,7 +192,7 @@ public class Roboter implements IRobot{
 
     /**
      * Gibt zurück um wieviel Grad sich der Roboter im manuellen Betrieb pro Tastendruck drehen soll
-     * @return
+     * @return orientationIncrementManuell
      */
     public double getOrientationIncrementManuell() {
         return orientationIncrementManuell;
@@ -201,7 +201,7 @@ public class Roboter implements IRobot{
     /**
      * Berechnet die Orientierung in Grad auf ein Wert zwischen 0° und +/-180°
      * @param orientation
-     * @return
+     * @return orientation
      */
     public double normalizeOrientation(double orientation) {
         if (orientation <= -180) {
