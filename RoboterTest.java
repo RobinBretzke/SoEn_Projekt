@@ -1,9 +1,11 @@
 package thu.robots.components;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.util.LinkedList;
+import java.util.List;
 
 class RoboterTest {
     private Roboter roboter;
@@ -14,6 +16,9 @@ class RoboterTest {
         Sensor Sensor1 = new Sensor(0,Math.PI/8,1);
         Sensoren.add(Sensor1);
         roboter=new Roboter(100,100,0,20,0, Color.red,Sensoren);
+        java.io.File file=new java.io.File("UnitTestEnvironment.txt");
+        Environment env=EnvironmentLoader.loadFromFile(file);
+        Validator val=new Validator(env);
     }
 
     @org.junit.jupiter.api.Test
@@ -75,6 +80,31 @@ class RoboterTest {
 
     }
 
+    @org.junit.jupiter.api.Test
+    void checkHindernis(){
+        roboter.setInitialPose(400,300,0);
+        AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(roboter);
+        List<BaseSensor> sensor = roboter.getSensors();
+        SensorData sensorData = automatischeSteuerung.findeKontakt(sensor);
+        Assertions.assertEquals(true,automatischeSteuerung.isHindernis());
+    }
 
+    @org.junit.jupiter.api.Test
+    void checkDistance(){
+        roboter.setInitialPose(400,300,0);
+        AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(roboter);
+        List<BaseSensor> sensor = roboter.getSensors();
+        SensorData sensorData = automatischeSteuerung.findeKontakt(sensor);
+        Assertions.assertEquals(75,sensorData.getDistance());
+    }
+
+    @org.junit.jupiter.api.Test
+    void checkAngle(){
+        roboter.setInitialPose(400,300,20);
+        AutomatischeSteuerung automatischeSteuerung = new AutomatischeSteuerung(roboter);
+        List<BaseSensor> sensor = roboter.getSensors();
+        SensorData sensorData = automatischeSteuerung.findeKontakt(sensor);
+        Assertions.assertEquals(-20,sensorData.getAngle(),0.5);
+    }
 
 }

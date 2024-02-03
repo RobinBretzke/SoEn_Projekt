@@ -89,4 +89,8 @@ public class AutomatischeSteuerung {
             }
         }
     }
+
+    public boolean isHindernis() {
+        return hindernis;
+    }
 }
