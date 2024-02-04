@@ -15,12 +15,6 @@ public class main {
         robotGUI.setVisible(true);
         LinkedList<BaseSensor> Sensoren = new LinkedList<>();
         Sensor Sensor1 = new Sensor(0,Math.PI/3 ,10);
-        /*
-        Sensor Sensor2 = new Sensor(Math.PI/2,Math.PI/4,5);
-        Sensor Sensor3 = new Sensor(-Math.PI/2,Math.PI/4,5);
-        Sensoren.add(Sensor3);
-        Sensoren.add(Sensor2);
-  */
         Sensoren.add(Sensor1);
         Roboter Roboter= new Roboter(300,200,+30,20,0, Color.red,Sensoren);
         robotGUI.setRobot(Roboter);

@@ -15,6 +15,7 @@ public class AutomatischeSteuerung {
      * Iteriert durch die Sensoren und Simuliert die Sensordaten. Wird ein Hindernis erkannt, wird die Variable "hindernis"
      * auf True gesetzt und gibt die sensorData zurück. Zudem wird die Geschwindigkeit des Roboters auf 0 gesetzt.
      * @param sensors
+
      * @return sensorData
      */
     public SensorData findeKontakt(List<BaseSensor> sensors) {
